@@ -1,7 +1,7 @@
 # SAM_border_recognition
  this is the final edition of recognizing the bacteria's border using SAM(Segment Anything Meta)+ Canny detecting algorithm
 
-## code introduction
+## 1 code introduction
 
 the code is stored in the [code](./code)，its iner distribution we can use the following file tree to represent:
 
@@ -27,7 +27,7 @@ the [3_time_fingerprint](./code/3_time_fingerprint) is used to draw time finger 
 
 the [4_timefinger_bar_drawing](./code/4_timefinger_bar_drawing) is used to draw the scale bar of the time-finger plot
 
-## data storage
+## 2 data storage
 
 all the data are stored in the [data](./data) folder
 
@@ -47,3 +47,11 @@ the [recognized_border_data](./data/recognized_border_data) is used to store the
 the [check_result](./data/check_result) is used to store the output of [2_check](./code/2_check)
 
 the [output_timefinger](./data/output_timefinger) is used to store the output of  [3_time_fingerprint](./code/3_time_fingerprint)
+
+## 3 model
+
+all the model can be downloaded from https://github.com/facebookresearch/segment-anything?tab=readme-ov-file
+
+you can choose 1 model fit your situation best to use
+
+this folder [model](./model) is used to store the model downloading from the  above website

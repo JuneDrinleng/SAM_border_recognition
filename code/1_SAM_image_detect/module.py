@@ -9,6 +9,9 @@ import numpy as np
 import pandas as pd
 import torch
 
+def check_path(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
 def format_memory_size(size):
     # 根据大小自动选择单位
