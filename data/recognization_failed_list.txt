@@ -1,0 +1,5 @@
+data/recognized_border_data\0000_output\0028.txt
+data/recognized_border_data\0000_output\0029.txt
+data/recognized_border_data\0000_output\0030.txt
+data/recognized_border_data\0000_output\0031.txt
+data/recognized_border_data\0000_output\0032.txt

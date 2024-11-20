@@ -18,8 +18,11 @@ the code is stored in the [code](./code)，its iner distribution we can use the 
 
 the [0_preprocess](./data/0_preprocess) is used to rename the file, we can use [rename.py](./code/0_preprocess/rename.py) to realize it. The name comparisiontable is stored in the [rename_table](./data/ComparisionTable.xlsx)
 
+the [1_SAM_image_detect](./code/1_SAM_image_detect) is used to get the border data. After using it to recognize, we need to check the recognization failed frame, and we can use the [count_blank_files.py](./code/0_preprocess/count_blank_files.py) to achieve it
 
-the [1_SAM_image_detect](./code/1_SAM_image_detect) is used to get the border data
+after checking the failure files, we need to change the filters to recoginzed again
+
+this code doesn't use the streaming reading, so it will cost plenty of memory
 
 the [2_check](./code/2_check) is used to generate the check video of the above generated data
 

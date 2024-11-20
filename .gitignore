@@ -1,3 +1,5 @@
 
 /data/origin_data
 model/sam_vit_b_01ec64.pth
+/data/Intermediate_variables
+/data/recognized_border_data

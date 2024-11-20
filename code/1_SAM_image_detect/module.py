@@ -176,17 +176,22 @@ def produce_x_y(frame_dir_SAM,height,width,output_file_path,area_ratio_threshold
     # for i in tqdm(range(0,100)):
         masks=get_mask(frames_dir=frame_dir_SAM,frame_series_num=i) 
         selected_mask=sorted_masks_by_bbox_threshold(masks=masks,area_ratio_threshold=area_ratio_threshold) 
-        boundary_list,x_coords,y_coords=get_mask_border(selected_mask,height=height,width=width)
         name_npy=os.path.basename(files[i])
         txt_filename=name_npy.replace('.npy','.txt')
         txt_path=os.path.join(output_file_path,txt_filename)
-        with open(txt_path, 'w') as f:
-    # 遍历列表中的每个元组
-            for item in boundary_list:
-                # 将元组的两个元素转换为字符串，并用制表符连接
-                line = "{}\t{}".format(item[0], item[1])
-                # 写入文件并添加换行符
-                f.write(line + '\n')
+        try:
+            boundary_list,x_coords,y_coords=get_mask_border(selected_mask,height=height,width=width)
+            with open(txt_path, 'w') as f:
+            # 遍历列表中的每个元组
+                for item in boundary_list:
+                    # 将元组的两个元素转换为字符串，并用制表符连接
+                    line = "{}\t{}".format(item[0], item[1])
+                    # 写入文件并添加换行符
+                    f.write(line + '\n')
+        except:
+            with open(txt_path, 'w') as file:
+                pass
+
 
 def produce_border_cordinates(file_path,out_path,output_file_path,frame_dir_SAM,checkpoint_path,module_name):
     frame_num,height,width=load_tif(video_path=file_path,frames_dir=out_path,output_file_path=output_file_path)
