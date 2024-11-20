@@ -5,16 +5,19 @@
 
 the code is stored in the [code](./code)，its iner distribution we can use the following file tree to represent:
 
-├─0_preprocess
-│
-├─1_SAM_image_detect
-│
-├─2_check
-│  └─video_produce
-│      
-├─3_time_fingerprint
+├─0_preprocess  
+│   
+├─1_SAM_image_detect  
 │  
-└─4_timefinger_bar_drawing
+├─2_check  
+│  └─video_produce  
+│       
+├─3_time_fingerprint  
+│    
+└─4_timefinger_bar_drawing  
+
+the [0_preprocess](./data/0_preprocess) is used to rename the file, we can use [rename.py](./code/0_preprocess/rename.py) to realize it
+
 
 the [1_SAM_image_detect](./code/1_SAM_image_detect) is used to get the border data
 

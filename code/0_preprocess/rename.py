@@ -18,5 +18,5 @@ for i in tqdm(range(len(file_list))):
     pass
 
 df=pd.DataFrame({'old_name':file_list,'new_name':new_data_list})
-df.to_csv('./data/ComparisonTable.csv',index=False,encoding='utf-8')
+df.to_excel('./data/ComparisonTable.xlsx',index=False)
 
