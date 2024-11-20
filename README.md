@@ -5,6 +5,8 @@
 
 the code is stored in the [code](./code)，its iner distribution we can use the following file tree to represent:
 
+├─0_preprocess
+│
 ├─1_SAM_image_detect
 │
 ├─2_check
@@ -28,13 +30,14 @@ all the data are stored in the [data](./data) folder
 
 the distribution is given in the following:
 ├─output_timefinger
-
 │  
-
 ├─check_result
 │  
-
+├─origin_data
+│  
 └─recognized_border_data
+
+the [origin_data](./data/origin_data)  is used to store the output of origin data. each data's format is tiff
 
 the [recognized_border_data](./data/recognized_border_data) is used to store the output of [1_SAM_image_detect](./code/1_SAM_image_detect) 
 
