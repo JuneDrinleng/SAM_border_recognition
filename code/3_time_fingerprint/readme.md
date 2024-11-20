@@ -1,0 +1,3 @@
+该文件夹用于生成时间指纹，其中选用的采样函数可以先用sampling_fuction_img来查看采样函数
+
+时间指纹的最新版本可视化代码：AnalysisChemistry_WorkCode\FASTSAM\code\visualization
