@@ -6,8 +6,12 @@ from tqdm import tqdm
 
 def read_txt(points_path):
     sepect_data=np.loadtxt(points_path)
-    x=sepect_data[:,0]
-    y=sepect_data[:,1]
+    if sepect_data.size==0:
+        x=np.zeros(256)
+        y=np.zeros(256)
+    else:
+        x=sepect_data[:,0]
+        y=sepect_data[:,1]
     return x,y
 
 def get_file_path_tiff(directory):
@@ -56,7 +60,7 @@ def video_produce(
     img_list=get_file_path_tiff(tiff_folder_path)
     point_list=get_file_path_txt(txt_folder_path)
     format_txt_name(folder_path=txt_folder_path)
-    print('文件命名格式转换完成')
+    # print('文件命名格式转换完成')
     point_list=get_file_path_txt(txt_folder_path)
     point_list = [file for file in point_list if os.path.basename(file) != 'frames_num.txt']
     height, width, layers = cv2.imread(img_list[0]).shape #读取第一张图片的格式来作为视频帧的格式
@@ -85,4 +89,4 @@ def video_produce(
             video_writer.write(img)
             pass
     video_writer.release()
-    print('视频生成完成')
+    # print('视频生成完成')
