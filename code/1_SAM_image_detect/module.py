@@ -172,6 +172,7 @@ def get_mask_border(selected_mask,height,width):
 
 def produce_x_y(frame_dir_SAM,height,width,output_file_path,area_ratio_threshold):
     files = glob.glob(os.path.join(frame_dir_SAM, '*.npy'))
+    area_list=[]
     for i in tqdm(range(0,len(files))):
     # for i in tqdm(range(0,100)):
         masks=get_mask(frames_dir=frame_dir_SAM,frame_series_num=i) 
@@ -181,6 +182,7 @@ def produce_x_y(frame_dir_SAM,height,width,output_file_path,area_ratio_threshold
         txt_path=os.path.join(output_file_path,txt_filename)
         try:
             boundary_list,x_coords,y_coords=get_mask_border(selected_mask,height=height,width=width)
+            area=selected_mask['area']
             with open(txt_path, 'w') as f:
             # 遍历列表中的每个元组
                 for item in boundary_list:
@@ -188,22 +190,27 @@ def produce_x_y(frame_dir_SAM,height,width,output_file_path,area_ratio_threshold
                     line = "{}\t{}".format(item[0], item[1])
                     # 写入文件并添加换行符
                     f.write(line + '\n')
+            area_list.append(area)
         except:
             with open(txt_path, 'w') as file:
                 pass
+            area_list.append(area)
+    return area_list
 
 
 def produce_border_cordinates(file_path,out_path,output_file_path,frame_dir_SAM,checkpoint_path,module_name):
     frame_num,height,width=load_tif(video_path=file_path,frames_dir=out_path,output_file_path=output_file_path)
     print(f"当前进程占用内存：{format_memory_size(psutil.Process(os.getpid()).memory_info().rss)}")
     read_folder(folder_Path=out_path,frames_dir=frame_dir_SAM,device = "cuda",frame_num=frame_num,checkpoint_path=checkpoint_path,module_name=module_name) # frame_dir是SAM运算结果的存储路径 #device是GPU还是CPU,GPU则用cuda
-    produce_x_y(frame_dir_SAM=frame_dir_SAM,height=height,width=width,output_file_path=output_file_path,area_ratio_threshold=0.7)
+    area_list=produce_x_y(frame_dir_SAM=frame_dir_SAM,height=height,width=width,output_file_path=output_file_path,area_ratio_threshold=0.7)
+    return area_list
 
 def folderization(origin_data_folder_path,
                   Intermediate_variables_folder_path,
                   output_folder_path,
                   checkpoint_path,
-                  module_name):
+                  module_name,
+                  area_df):
     files = glob.glob(os.path.join(origin_data_folder_path, '*.tif'))
     for fileIdx in range(0,len(files)):
         filePath = files[fileIdx] #完整路径
@@ -212,11 +219,17 @@ def folderization(origin_data_folder_path,
         out_path=os.path.join(Intermediate_variables_folder_path,fileName+'_split_video')
         frame_dir_SAM=os.path.join(Intermediate_variables_folder_path,fileName+'_mask_npy')
         output_file_path=os.path.join(output_folder_path,fileName+'_output')
-        produce_border_cordinates(file_path=filePath, # 待处理数据
+        area_list=produce_border_cordinates(file_path=filePath, # 待处理数据
                             out_path=out_path,#视频分割成帧存储文件路径
                             output_file_path=output_file_path,# 边界坐标txt文件的存储路径
                             frame_dir_SAM=frame_dir_SAM,# SAM运算结果的存储路径
                             checkpoint_path=checkpoint_path,
                             module_name=module_name)
-        print("已经完成第{}个文件的处理".format(fileIdx))
+        if len(area_list)<len(area_df):
+            for i in range(len(area_list),len(area_df)):
+                area_list.append(np.nan)
+            pass
+        area_df[fileName]=area_list
+        print(f"已经完成第{fileIdx+1}/{len(files)}个文件的处理")
+    return area_df
 

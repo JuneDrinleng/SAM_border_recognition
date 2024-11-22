@@ -2,8 +2,8 @@ import os
 from tqdm import tqdm
 
 
-need_to_check_dir = 'data/recognized_border_data'
-output_file_path = 'data/recognization_failed_list.txt'
+need_to_check_dir = 'data/recognized_border_data_1'
+output_file_path = 'data/recognization_failed_list_1.txt'
 empty_files_list= []
 sub_folders = os.listdir(need_to_check_dir)
 for sub_folder in tqdm(sub_folders):

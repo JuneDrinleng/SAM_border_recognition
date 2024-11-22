@@ -34,8 +34,8 @@ def main():
                 pass
 
 if __name__ == '__main__':
-    npy_parents_folder='data/Intermediate_variables'
-    output_folder='data/check_by_hand_results'
+    npy_parents_folder='data/Intermediate_variables_1'
+    output_folder='data/check_by_hand_results_1'
     if os.path.exists(output_folder)==False:
         os.makedirs(output_folder)
     folder_list=os.listdir(npy_parents_folder)

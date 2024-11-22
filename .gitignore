@@ -7,3 +7,9 @@ model/sam_vit_b_01ec64.pth
 /data/pack
 /data/check_by_hand_results
 data/pack_full.zip
+/data/origin_data_1
+/data/Intermediate_variables_1
+/data/recognized_border_data_1
+/data/old_results
+/data/check_by_hand_results_1
+/data/output_video_1

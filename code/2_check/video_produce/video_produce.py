@@ -14,6 +14,15 @@ def read_txt(points_path):
         y=sepect_data[:,1]
     return x,y
 
+def check_path(path):
+    '''
+    检查路径是否存在，若不存在则创建
+    :param path: 要检查的路径
+    :return: None
+    '''
+    if not os.path.exists(path):
+        os.makedirs(path)
+
 def get_file_path_tiff(directory):
     '''
     生成该文件夹下特定后缀的文件的路径的列表
@@ -68,7 +77,7 @@ def video_produce(
     if len(img_list)!=len(point_list):
         print('error')
     else:
-        for i in tqdm(range(len(img_list))):
+        for i in (range(len(img_list))):
             img=cv2.imread(img_list[i])
             points_path=point_list[i]
             x,y=read_txt(points_path)
