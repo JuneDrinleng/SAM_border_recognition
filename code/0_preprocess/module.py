@@ -3,6 +3,31 @@ from tqdm import tqdm
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import cv2 as cv
+
+def sorted_masks_by_bbox_threshold(masks,area_ratio_threshold):
+    def calculate_bbox_length(bbox):
+        # 计算 bbox 对角线长度
+        x1, y1, width, height = bbox
+        return width+height
+    # 去除 bbox_length 最长的 mask
+    masks = sorted(masks, key=lambda x: calculate_bbox_length(x['bbox']), reverse=True)
+    masks.pop(0)
+
+    # 筛选面积占 bbox 面积的比例大于阈值的 mask
+    filtered_masks = []
+    for mask in masks:
+        bbox_area = mask['bbox'][2] * mask['bbox'][3]
+        area_ratio = mask['area'] / bbox_area
+        if area_ratio >= area_ratio_threshold:
+            filtered_masks.append(mask)
+
+    # 在剩下的 mask 中挑选 bbox_length 长的
+    if filtered_masks:
+        selected_mask = max(filtered_masks, key=lambda x: calculate_bbox_length(x['bbox']))
+        return selected_mask
+    else:
+        return None
 
 def get_mask_border(selected_mask,height,width):
     """

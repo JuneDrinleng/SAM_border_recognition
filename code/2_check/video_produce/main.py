@@ -4,7 +4,7 @@ fps = 1  #视频帧率
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # 或者根据你的系统选择合适的编码器
 tiff_folder_path_total='data\\Intermediate_variables'
 txt_folder_path_total='data\\recognized_border_data'
-video_output_path='data\\output'
+video_output_path='data\\output_video'
 
 def main():
     file_list=os.listdir(txt_folder_path_total)
