@@ -5,3 +5,4 @@ model/sam_vit_b_01ec64.pth
 /data/recognized_border_data
 /data/output_video
 /data/pack
+/data/check_by_hand_results
