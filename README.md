@@ -41,6 +41,14 @@ the distribution is given in the following:
 │  
 ├─origin_data  
 │  
+├─ComparisonTable.xlsx  
+│    
+├─output_video  
+│    
+├─Intermediate_variables  
+│    
+├─output_video  
+│    
 └─recognized_border_data  
 
 the [origin_data](./data/origin_data)  is used to store the output of origin data. each data's format is tiff  
@@ -50,6 +58,14 @@ the [recognized_border_data](./data/recognized_border_data) is used to store the
 the [check_result](./data/check_result) is used to store the output of [2_check ](./code/2_check) 
 
 the [output_timefinger](./data/output_timefinger) is used to store the output of [3_time_fingerprint](./code/3_time_fingerprint)  
+
+the [ComparisonTable.xlsx](./data\ComparisonTable.xlsx) stores the rename results
+
+the [output_video](./data\output_video) stores the check results video
+
+the [Intermediate_variables](./data\Intermediate_variables) stores the intermediate variables, such as tiff img used to draw checking image, npy the SAM get
+
+the [check_by_hand_results](./data\check_by_hand_results) stores the re-filter results, including all the border/area and check img
 
 ## 3 model
 
