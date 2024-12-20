@@ -1,5 +1,5 @@
 # SAM_border_recognition
- This is the final edition👀 of recognizing the bacteria's border using SAM(Segment Anything Meta)+ Canny detecting algorithmⓂ
+ This is the final edition👀 of recognizing the bacteria's border using SAM(Segment Anything Meta)+ Canny detecting algorithm😊
 
 ## 0 What we are trying to do
 
