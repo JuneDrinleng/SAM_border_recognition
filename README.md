@@ -104,3 +104,16 @@ this folder [model](./model) is used to store the model downloading from the  ab
 3. check: using [check](./code/2_check) to generate check video  
 4. re-filter: using [filtered_by_hand](./code\filter_by_hand) to generate all the border we recognize and all the check image. the area and border are include in the result in [check_by_hand_results](./data\check_by_hand_results) ,area data is in the bottom of the border txt file  
 
+## 5 Reference
+
+[1] https://github.com/facebookresearch/segment-anything
+
+~~~latex
+@article{kirillov2023segany,
+  title={Segment Anything},
+  author={Kirillov, Alexander and Mintun, Eric and Ravi, Nikhila and Mao, Hanzi and Rolland, Chloe and Gustafson, Laura and Xiao, Tete and Whitehead, Spencer and Berg, Alexander C. and Lo, Wan-Yen and Doll{\'a}r, Piotr and Girshick, Ross},
+  journal={arXiv:2304.02643},
+  year={2023}
+}
+~~~
+
