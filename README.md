@@ -1,6 +1,28 @@
 # SAM_border_recognition
  this is the final edition of recognizing the bacteria's border using SAM(Segment Anything Meta)+ Canny detecting algorithm
 
+## 0 what we are trying to do
+
+what we are trying to do is to use this code to recognize the expantion of bacteria's border:  
+
+![image-20241220140903840](./README.assets/image-20241220140903840.png)
+
+the reason why we use SAM is that we found hard to use Canny or threshold segmentation to get the border:  
+
+![image-20241220141026235](./README.assets/image-20241220141026235.png)
+
+and we find that SAM is good at segmentation so we use it the get the mask and than use mask + Canny to get the border.  
+
+
+
+the data comes from the below system:  
+
+![image-20241220141801472](./README.assets/image-20241220141801472.png)
+
+all the work has been published [here](https://pubs.acs.org/doi/10.1021/acsabm.4c01442) in acs:  
+
+![image-20241220142117118](./README.assets/image-20241220142117118.png)
+
 ## 1 code introduction
 
 the code is stored in the [code](./code)，its iner distribution we can use the following file tree to represent:
