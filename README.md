@@ -59,6 +59,7 @@ The [4_timefinger_bar_drawing](./code/4_timefinger_bar_drawing) is used to draw 
 All the data are stored in the [data](./data) folder  
 
 The distribution is given in the following:  
+~~~
 ├─output_timefinger  
 │  
 ├─check_result  
@@ -74,6 +75,7 @@ The distribution is given in the following:
 ├─output_video  
 │    
 └─recognized_border_data  
+~~~
 
 The [origin_data](./data/origin_data)  is used to store the output of origin data. each data's format is tiff  
 
